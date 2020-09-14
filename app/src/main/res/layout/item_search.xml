@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="searchObject"
+            type="com.example.baseandroid.domain.SearchObject"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imv_item"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="@dimen/dp8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/separator"
+            app:imageUrl="@{searchObject.xlImage}"
+            app:layout_constraintEnd_toStartOf="@+id/txt_title"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txt_title"
+            tools:text="@string/example_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imv_item"
+            app:layout_constraintBottom_toTopOf="@+id/txt_price"
+            android:textStyle="bold"
+            android:text="@{searchObject.productDisplayName}"
+            android:textSize="@dimen/sp18"
+            android:layout_marginStart="@dimen/dp8"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txt_price"
+            app:layout_constraintStart_toStartOf="@+id/txt_title"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dp8"
+            tools:text="$150,000"
+            app:formatMoney="@{searchObject.listPrice}"
+            app:layout_constraintBottom_toTopOf="@+id/txt_location"
+            android:textSize="@dimen/sp20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txt_location"
+            tools:text="@string/example_location"
+            app:layout_constraintStart_toStartOf="@+id/txt_price"
+            app:layout_constraintTop_toBottomOf="@+id/txt_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/separator"
+            android:text="@{searchObject.brand}"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginStart="@dimen/dp8"
+            android:layout_marginEnd="@dimen/dp8"
+            app:layout_constraintTop_toBottomOf="@+id/txt_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
